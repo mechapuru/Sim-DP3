@@ -133,6 +133,7 @@ logging:
 
 checkpoint:
   save_ckpt: False # if True, save checkpoint every checkpoint_every
+  save_every: 50
   topk:
     monitor_key: test_mean_score
     mode: max
@@ -142,14 +143,14 @@ checkpoint:
   save_last_snapshot: False
 
 multi_run:
-  run_dir: data/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
+  run_dir: /scratch/darshil.jariwala/3D-Diffusion-Policy/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
   wandb_name_base: ${now:%Y.%m.%d-%H.%M.%S}_${name}_${task_name}
 
 hydra:
   job:
     override_dirname: ${name}
   run:
-    dir: data/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
+    dir: /scratch/darshil.jariwala/3D-Diffusion-Policy/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
   sweep:
-    dir: data/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
+    dir: /scratch/darshil.jariwala/3D-Diffusion-Policy/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}_${task_name}
     subdir: ${hydra.job.num}
